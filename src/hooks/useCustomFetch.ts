@@ -4,7 +4,6 @@ import { fakeFetch, RegisteredEndpoints } from "../utils/fetch"
 import { useWrappedRequest } from "./useWrappedRequest"
 
 export function useCustomFetch(toggleBtn: (arg: boolean) => void) {
-  console.log(toggleBtn)
   const { cache } = useContext(AppContext)
   const { loading, wrappedRequest } = useWrappedRequest()
 
