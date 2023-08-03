@@ -142,11 +142,11 @@ _This bug has 2 wrong behaviors that will be fixed with the same solution_
 
 **Actual:** The employees filter shows "Loading employees..." after clicking **View more** until new transactions are loaded.
 
-# Bug 6: View more button not working as expected
+# Bug 6: View more button not working as expected (SOLVED)
 
 _This bug has 2 wrong behaviors that can be fixed with the same solution. It's acceptable to fix with separate solutions as well._
 
-##### Part 1
+##### Part 1 (SOLVED)
 
 **How to reproduce:**
 
@@ -158,7 +158,7 @@ _This bug has 2 wrong behaviors that can be fixed with the same solution. It's a
 
 **Actual:** The **View more** button is visible even when transactions are filtered by employee. _You can even click **View more** button and get an unexpected result_
 
-##### Part 2
+##### Part 2 (SOLVED)
 
 **How to reproduce:**
 

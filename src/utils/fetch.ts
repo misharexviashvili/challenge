@@ -11,6 +11,7 @@ const mockTimeout = 1 * timeout
 
 export function fakeFetch<TData, TParams extends object = object>(
   endpoint: RegisteredEndpoints,
+  toggleBtn: (arg: boolean) => void,
   params?: TParams
 ): Promise<TData> {
   return new Promise((resolve, reject) => {
@@ -34,8 +35,12 @@ export function fakeFetch<TData, TParams extends object = object>(
           break
 
         case "paginatedTransactions":
-          result = getTransactionsPaginated(params as PaginatedRequestParams) as unknown as TData
-
+          result = getTransactionsPaginated(params as PaginatedRequestParams) as unknown as TData & {
+            nextPage: number | null
+          }
+          console.log(result)
+          if (!result.nextPage) toggleBtn(false)
+          // write logic
           setTimeout(() => {
             mockApiLogger({ data: { endpoint, params, result } })
             resolve(result)

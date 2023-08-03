@@ -11,6 +11,7 @@ export function InputSelect<TItem>({
   parseItem,
   isLoading,
   loadingLabel,
+  toggleViewMore,
 }: InputSelectProps<TItem>) {
   const [selectedValue, setSelectedValue] = useState<TItem | null>(defaultValue ?? null)
   // const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({
@@ -47,9 +48,10 @@ export function InputSelect<TItem>({
         getToggleButtonProps,
         inputValue,
       }) => {
+        console.log(inputValue)
         const toggleProps = getToggleButtonProps()
         const parsedSelectedItem = selectedItem === null ? null : parseItem(selectedItem)
-
+        if (inputValue !== "All Employees") toggleViewMore(false)
         return (
           <div className="RampInputSelect--root">
             <label className="RampText--s RampText--hushed" {...getLabelProps()}>
@@ -71,7 +73,7 @@ export function InputSelect<TItem>({
                 "RampInputSelect--dropdown-container-opened": isOpen,
               })}
               {...getMenuProps()}
-              style={{position:'relative' }}
+              style={{ position: "relative" }}
             >
               {renderItems()}
             </div>

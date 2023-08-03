@@ -3,7 +3,8 @@ import { AppContext } from "../utils/context"
 import { fakeFetch, RegisteredEndpoints } from "../utils/fetch"
 import { useWrappedRequest } from "./useWrappedRequest"
 
-export function useCustomFetch() {
+export function useCustomFetch(toggleBtn: (arg: boolean) => void) {
+  console.log(toggleBtn)
   const { cache } = useContext(AppContext)
   const { loading, wrappedRequest } = useWrappedRequest()
 
@@ -21,7 +22,7 @@ export function useCustomFetch() {
           return data as Promise<TData>
         }
 
-        const result = await fakeFetch<TData>(endpoint, params)
+        const result = await fakeFetch<TData>(endpoint, toggleBtn, params)
         cache?.current.set(cacheKey, JSON.stringify(result))
         return result
       }),
@@ -34,7 +35,7 @@ export function useCustomFetch() {
       params?: TParams
     ): Promise<TData | null> =>
       wrappedRequest<TData>(async () => {
-        const result = await fakeFetch<TData>(endpoint, params)
+        const result = await fakeFetch<TData>(endpoint, toggleBtn, params)
         return result
       }),
     [wrappedRequest]
