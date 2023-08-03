@@ -23,8 +23,7 @@ export function usePaginatedTransactions(
       if (response === null || previousResponse === null) {
         return response
       }
-      console.log("prev", previousResponse)
-      console.log(response)
+  
       return { data: [...previousResponse.data, ...response.data], nextPage: response.nextPage }
     })
   }, [fetchWithCache, paginatedTransactions])

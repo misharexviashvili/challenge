@@ -38,7 +38,7 @@ export function fakeFetch<TData, TParams extends object = object>(
           result = getTransactionsPaginated(params as PaginatedRequestParams) as unknown as TData & {
             nextPage: number | null
           }
-          console.log(result)
+          
           if (!result.nextPage) toggleBtn(false)
           // write logic
           setTimeout(() => {

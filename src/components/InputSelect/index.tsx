@@ -48,7 +48,6 @@ export function InputSelect<TItem>({
         getToggleButtonProps,
         inputValue,
       }) => {
-        console.log(inputValue)
         const toggleProps = getToggleButtonProps()
         const parsedSelectedItem = selectedItem === null ? null : parseItem(selectedItem)
         if (inputValue !== "All Employees") toggleViewMore(false)
