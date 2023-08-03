@@ -1,7 +1,7 @@
 import Downshift from "downshift"
 import { useCallback, useState } from "react"
 import classNames from "classnames"
-import { DropdownPosition, GetDropdownPositionFn, InputSelectOnChange, InputSelectProps } from "./types"
+import { InputSelectOnChange, InputSelectProps } from "./types"
 
 export function InputSelect<TItem>({
   label,
@@ -119,15 +119,15 @@ export function InputSelect<TItem>({
   )
 }
 
-const getDropdownPosition: GetDropdownPositionFn = (target) => {
-  if (target instanceof Element) {
-    const { top, left } = target.getBoundingClientRect()
-    const { scrollY } = window
-    return {
-      top: scrollY + top + 63,
-      left,
-    }
-  }
+// const getDropdownPosition: GetDropdownPositionFn = (target) => {
+//   if (target instanceof Element) {
+//     const { top, left } = target.getBoundingClientRect()
+//     const { scrollY } = window
+//     return {
+//       top: scrollY + top + 63,
+//       left,
+//     }
+//   }
 
-  return { top: 0, left: 0 }
-}
+//   return { top: 0, left: 0 }
+// }

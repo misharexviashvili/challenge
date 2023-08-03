@@ -26,7 +26,7 @@ export function useCustomFetch(toggleBtn: (arg: boolean) => void) {
         cache?.current.set(cacheKey, JSON.stringify(result))
         return result
       }),
-    [cache, wrappedRequest]
+    [cache, wrappedRequest, toggleBtn]
   )
 
   const fetchWithoutCache = useCallback(
@@ -38,7 +38,7 @@ export function useCustomFetch(toggleBtn: (arg: boolean) => void) {
         const result = await fakeFetch<TData>(endpoint, toggleBtn, params)
         return result
       }),
-    [wrappedRequest]
+    [wrappedRequest, toggleBtn]
   )
 
   const clearCache = useCallback(() => {
